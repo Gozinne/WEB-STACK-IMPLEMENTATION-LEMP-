@@ -29,13 +29,13 @@ The following items are required to begin and complete this project.
 * Run the EC2 instance on Ubuntu and set the network security to: SSH,Port:22; HTTP,Port:80.
 * Connect VScode or MobaXterm to the EC2 instance and launch a new terminal.
 
-***
 <img
   src="https://user-images.githubusercontent.com/80969889/203666926-8e0ea8f1-174d-495e-9d6f-97559d85ec52.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+***
+
 ## Installing the NginX Web Server 
   
 [Nginx](https://nginx.org/en/) is the world's second most used web server, after Apache. Nginx supports all Unix-like and, to a lesser extent, Windows operating systems.
@@ -58,24 +58,26 @@ sudo apt update
 sudo apt install nginx
 ```
 
-***
+
 <img
   src="https://user-images.githubusercontent.com/80969889/204907347-1c79ae05-8e7f-4d40-bfc5-33fe184ddc36.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+***
+
 #Verify that nginx was successfully installed and running as a service in Ubuntu
 ```
 sudo systemctl status nginx
 ```
 
-***
+
 <img
   src="https://user-images.githubusercontent.com/80969889/204907894-1364b955-d2f3-4795-9ee0-9a34f8683e75.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 Our server is running and we can access it locally and from the Internet.
 
@@ -84,12 +86,12 @@ Our server is running and we can access it locally and from the Internet.
 curl http://localhost:80
 ```
 
-***
 <img
   src="https://user-images.githubusercontent.com/80969889/204908430-3e7ff079-df70-418b-97bc-7e1b8f103130.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 It is time to check how Nginx server handles Internet queries.
 
@@ -98,13 +100,13 @@ It is time to check how Nginx server handles Internet queries.
 http://<Public-IP-Address>:80
 ```
 
-***
 <img
   src="https://user-images.githubusercontent.com/80969889/204909869-7cba92d5-c06a-4b4c-8fb3-739cd74383e3.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+***
+
 ## Installing MySQL
 
 [MySQL](https://www.talend.com/resources/what-is-mysql/) is a [SQL-based open-source database](https://www.w3schools.com/sql/sql_intro.asp) that is used to store and process data while ensuring data consistency and integrity. It tabulates data by arranging it in rows and columns.  It is also ACID compliant.
@@ -122,12 +124,13 @@ sudo apt install mysql-server
 ```  
 To confirm installation, click **Y** and then **ENTER** when prompted.
 
-***
+
 <img
   src="https://user-images.githubusercontent.com/80969889/204912879-aafdf04b-0ffa-4db8-a30a-bc4316a2d6d4.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 #Enter this once installation is finished to launch the MySQL console
 ```
@@ -135,12 +138,12 @@ sudo mysql
 ```
  You should see output
 
-***
 <img
   src="https://user-images.githubusercontent.com/80969889/204913302-c218be92-37a4-48bd-8953-96af0b17747d.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 #To define the user's password as PassWord.1, enter
 ```
@@ -160,21 +163,21 @@ Regardless of whether the VALIDATE PASSWORD PLUGIN was activated, the server wil
 **<PassWord.1>** should be used. 
 The server will display the password strength for the specified root password and prompt you to continue.
 
-***
 <img
   src="https://user-images.githubusercontent.com/80969889/204914021-ace89760-98c4-41d3-87e9-399c9e57b1d4.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
-  
+***
+
 For the rest of the questions, press **Y** and hit the **ENTER** key at each prompt. 
 
-***
 <img
   src="https://user-images.githubusercontent.com/80969889/204916759-394a5efc-0267-46c7-a14a-76f303fe67ca.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 #Test the MySQL console by typing:
 ```
@@ -182,13 +185,13 @@ sudo mysql -p
 ```
 Exit the MySQL console by typing **exit**.
 
-***
 <img
   src= "https://user-images.githubusercontent.com/80969889/204917220-92e9ce28-f0c1-4fd7-b42c-5853efd67bd4.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
- 
+***
+
  ## Installing PHP
 
 [PHP](https://www.php.net/) stands for Hypertext Preprocessor and is a server-side programming language that interfaces with the database MySQL and performs all actions that the user asks such as obtaining data, adding data, altering data, and processing the data.
@@ -208,12 +211,12 @@ PHP must now be installed in order to read code and generate dynamic content for
 ```
 When prompted, type **Y** and press **ENTER** to confirm installation.
 
-***
 <img
   src= "https://user-images.githubusercontent.com/80969889/204918862-af365fae-6208-4f12-8c37-efab33415ff5.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 
 

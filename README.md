@@ -206,8 +206,9 @@ Why  use PHP?
 You've configured Nginx to serve content and MySQL to store and manage data. 
 PHP must now be installed in order to read code and generate dynamic content for the web server.
 
-#Istall these 2 packages at once
-```sudo apt install php-fpm php-mysql
+#Install these 2 packages at once
+```
+sudo apt install php-fpm php-mysql
 ```
 When prompted, type **Y** and press **ENTER** to confirm installation.
 
@@ -218,8 +219,80 @@ When prompted, type **Y** and press **ENTER** to confirm installation.
   style="display: inline-block; margin: 0 auto; max-width: 300px">
 ***
 
+## Configuring Nginx to Use PHP Processor
+
+We may establish server blocks (similar to virtual hosts in Apache) to encapsulate configuration data and host more than one domain on a single server when using the Nginx web server. 
+**projectLEMP** is the domain name in this project. 
+
+Nginx is set to serve content from the /var/www/html directory. 
+
+#Create the root web directory for the domain.
+```
+sudo mkdir /var/www/projectLEMP
+```
+#Next, use the $USER environment variable to grant ownership of the directory to your current system user
+```
+sudo chown -R $USER:$USER /var/www/projectLEMP
+```
+#Using nano or vi command-line editor, create a new configuration file in Nginx's sites-available directory. 
+```
+sudo nano /etc/nginx/sites-available/projectLEMP
+```
+
+<img
+  src="https://user-images.githubusercontent.com/80969889/204927565-b135ffcc-da2e-4ebe-ab6c-359ef11f8c11.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
+
+#Copy and paste the following bare-bones configuration
+```
+#/etc/nginx/sites-available/projectLEMP
+
+server {
+
+ listen 80;
+
+server_name: projectLEMP, www.projectLEMP;
+
+ root /var/www/projectLEMP; 
+
+ index.html, index.htm, index.php;
 
 
+ location
+
+     try_files $uri $uri/ = 404;
+
+ }
+
+ 
+ location .php$
+
+     include snippets/fastcgi-php.conf;
+
+     fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+
+  }
+
+ 
+ location /.ht
+
+     deny all;
+
+ }
+
+ 
+}
+```
+
+<img
+  src=https://user-images.githubusercontent.com/80969889/204927698-b65c03bf-4104-416d-9a69-c058540a3c90.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 
 

@@ -288,16 +288,58 @@ server_name: projectLEMP, www.projectLEMP;
 ```
 
 <img
-  src=https://user-images.githubusercontent.com/80969889/204927698-b65c03bf-4104-416d-9a69-c058540a3c90.png"
+  src="https://user-images.githubusercontent.com/80969889/204927698-b65c03bf-4104-416d-9a69-c058540a3c90.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
 ***
 
+Once you've finished editing, save and shut the file. 
+For nano, press **CTRL+X**, followed by **y** and **ENTER**. 
+For vi, use **Esc** to enter command mode, then type:**wq**. 
+
+#Link to the config file from Nginx's sites-enabled directory to activate your configuration:
+```
+sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
+```
+#Test configuration for syntax errors by typing
+```
+sudo nginx -t
+```
+The below message would be seen:
 
 
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 
 
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+
+#Disable the default Nginx host, which is presently set to listen on port 80
+
+```
+sudo unlink /etc/nginx/sites-enabled/default
+```
+#Reload Nginx when finished to implement the changes
+```
+sudo systemctl reload nginx
+```
+Although the new website is now operational, the web root /var/www/projectLEMP remains empty.
+
+#Create an index.html file in that directory to verify that the new server block is functioning properly
+```
+sudo echo 'Hello LEMP from hostname' $(curl -s http://<Public-IP-Address>/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://<Public-IP-Address>/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html
+```
+#Open a browser and try to access your website
+```
+http://<Public-IP-Address>:80
+```
+<img
+  src="https://user-images.githubusercontent.com/80969889/205390303-a32dda7e-7d74-438e-9017-a669f7744219.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 
 

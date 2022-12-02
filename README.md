@@ -411,6 +411,13 @@ mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
 ```
 mysql -u example_user -p
 ```
+<img
+  src="https://user-images.githubusercontent.com/80969889/205404292-c7329c34-883a-43e3-a974-435a79821ff6.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
+
 #Confirm access to the example_database database
 ```
 mysql> SHOW DATABASES;
@@ -482,6 +489,12 @@ Output
 
 ***
 Then exit the MySQL console by typing **exit**.
+<img
+  src="https://user-images.githubusercontent.com/80969889/205404408-ffc55293-3985-44c2-b9a9-4e45c3d52b1b.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
 
 #Now create a new PHP file in the custom web root directory using an editor
 ```

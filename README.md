@@ -308,12 +308,9 @@ sudo nginx -t
 ```
 The below message would be seen:
 
-
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 
-
 nginx: configuration file /etc/nginx/nginx.conf test is successful
-
 
 #Disable the default Nginx host, which is presently set to listen on port 80
 
@@ -391,9 +388,7 @@ If you need it later, you can always regenerate it.
 ## Retrieving Data from MySQL Database with PHP
 
 A database (DB) will be constructed with a simple "To do list" and access to it will be configured so that the Nginx website can query and show data from it.
-
 Create a new user with the mysql native password authentication approach to connect to the MySQL database using PHP.
-
 The database is called **example_database**, and the user is called **example_user**, but these names can be changed.
 
 #To begin, log in to the MySQL console as the root user
@@ -408,43 +403,132 @@ mysql> CREATE DATABASE `example_database`;
 ```
 mysql> CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
+#Give this user permission over the example_database database
+```
+mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
+```
+#Exit the MySQL shell by typing **exit**, and then test by
+```
+mysql -u example_user -p
+```
+#Confirm access to the example_database database
+```
+mysql> SHOW DATABASES;
+```
+This will give  the following output:
 
+Output
 
++--------------------+
 
+| Database        |
 
++--------------------+
 
+| example_database   |
 
+| information_schema |
 
++--------------------+
 
+2 rows in set (0.000 sec)
 
+***
+Next, we’ll create a test table named todo_list.
 
+#From the MySQL console, run the following statement:
+```
+CREATE TABLE example_database.todo_list (
 
+mysql>  item_id INT AUTO_INCREMENT,
 
+mysql>  content VARCHAR(255),
 
+mysql>  PRIMARY KEY(item_id)
 
+mysql> );
+```
+Insert a few rows of content in the test table. 
 
+#Repeat the next command a few times, using different VALUES
+```
+mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");
+```
+#To confirm that the data IS successfully saved run:
+```
+mysql> SELECT * FROM example_database.todo_list;
+```
+You’ll see the following output:
 
+Output
 
++---------+--------------------------+
 
+| item_id | content               |
 
++---------+--------------------------+
 
+|    1 | My first important item  |
 
+|    2 | My second important item |
 
+|    3 | My third important item  |
 
+|    4 | and this one more thing  |
 
++---------+--------------------------+
 
+4 rows in set (0.000 sec)
 
+***
+Then exit the MySQL console by typing **exit**.
 
+#Now create a new PHP file in the custom web root directory using an editor
+```
+nano /var/www/projectLEMP/todo_list.php
+```
+#Copy this content into the todo_list.php script
+```
+<?php
 
+$user = "example_user";
 
+$password = "password";
 
+$database = "example_database";
 
+$table = "todo_list";
 
+try {
 
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
 
+  echo "<h2>TODO</h2><ol>";
 
+  foreach($db->query("SELECT content FROM $table") as $row) {
 
+ echo "<li>" . $row['content'] . "</li>";
 
+  }
 
+  echo "</ol>";
 
+} catch (PDOException $e) {
 
+ print "Error!: " . $e->getMessage() . "<br/>";
+
+ die();
+
+}
+```
+
+***
+Save and close the file when done.
+
+In a web browser, navigate to this website by entering the domain name or public IP address.
+```
+http://<Public_domain_or_IP>/todo_list.php
+```
+You should see something like this, displaying the material you've entered into your test table.:
+
+This indicates that your PHP environment is prepared to connect to and communicate with your MySQL server.

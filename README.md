@@ -388,9 +388,26 @@ sudo rm /var/www/your_domain/info.php
 
 If you need it later, you can always regenerate it.
 
+## Retrieving Data from MySQL Database with PHP
 
+A database (DB) will be constructed with a simple "To do list" and access to it will be configured so that the Nginx website can query and show data from it.
 
+Create a new user with the mysql native password authentication approach to connect to the MySQL database using PHP.
 
+The database is called **example_database**, and the user is called **example_user**, but these names can be changed.
+
+#To begin, log in to the MySQL console as the root user
+```
+sudo mysql
+```
+#Create a new database by running the following command from MySQL console
+```
+mysql> CREATE DATABASE `example_database`;
+```
+#The user's password is thus defined as password, although it may be updated with a safe password of choosing
+```
+mysql> CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+```
 
 
 

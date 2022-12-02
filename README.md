@@ -341,7 +341,52 @@ http://<Public-IP-Address>:80
   style="display: inline-block; margin: 0 auto; max-width: 300px">
 ***
 
+## Testing PHP with NginX
 
+We build a test PHP file in your document root to ensure that Nginx can successfully pass PHP files to the PHP processor. 
+
+#In a text editor, create a new file named info.php under the document root.
+```
+sudo nano /var/www/projectLEMP/info.php
+```
+#In the new file, type or paste this valid PHP code that will return information about your server.
+```
+<?php
+
+phpinfo();
+```
+<img
+  src="https://user-images.githubusercontent.com/80969889/205396949-4b4ad0c0-8fcf-4681-b99f-55d9ad502c73.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
+
+#Now navigate to this website in your computer browser.
+```
+http://`server_domain_or_IP`/info.php
+```
+<img
+  src="https://user-images.githubusercontent.com/80969889/205397030-834db9a7-6cc6-4310-93b0-52d6af0412e4.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
+
+After reviewing the important information about the PHP server on that page, delete the file produced since it includes critical information about the PHP environment and the Ubuntu server.
+
+#Delete that file using
+```
+sudo rm /var/www/your_domain/info.php
+```
+<img
+  src="https://user-images.githubusercontent.com/80969889/205397182-6e463b12-b540-4552-b448-d4d2abb8606d.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+***
+
+If you need it later, you can always regenerate it.
 
 
 
